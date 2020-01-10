@@ -103,7 +103,7 @@ h5 {
 .button-input {
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .task-title-input {
@@ -124,6 +124,31 @@ h5 {
   height: auto;
   width: auto;
   border-bottom: 1px solid #44697A ;
+}
+
+.current-task-list {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  justify-content: center;
+  width: 90%;
+  height: fit-content;
+  margin-top: .5em;
+}
+
+.left-task {
+  width: 20em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: .5em;
+  margin-left: 2em;
+}
+
+.left-task p {
+  font-size: 1.4em;
+  width: 80%;
 }
 
 /* specific left column buttons */
@@ -173,6 +198,14 @@ h5 {
   overflow: auto;
 }
 
+/* task card header */
+.task-card-title {
+  border-bottom: 1px solid grey;
+  margin-top: 1em;
+  height: auto;
+}
+
+/* task card body */
 .checkbox {
   width: 1em;
   height: 1em;
@@ -180,17 +213,16 @@ h5 {
 
 .single-task {
   display: flex;
-  justify-content:space-around;
+  justify-content: flex-start;
   flex-direction: row;
   margin: .5em;
 }
 
-.task-card-title {
-  border-bottom: 1px solid grey;
-  margin-top: 1em;
-  height: auto;
+.single-task p {
+  margin-left: 1em;
 }
 
+/* task card footer */
 .task-card-footer {
   display: flex;
   justify-content: space-between;
