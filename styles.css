@@ -128,7 +128,7 @@ h5 {
 
 .current-task-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-start;
   justify-content: center;
   width: 90%;
