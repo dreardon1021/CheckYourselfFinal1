@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+/* global tags */
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+span {
+  color: #ffc30c;
+}
+
+div {
+  width: auto;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 5em;
+  background-color: #1f1f3D;
+}
+
+h2 {
+  width: auto;
+  height: auto;
+  margin-left: 1.5em;
+  font-size: 3em;
+  color: white;
+}
+
+input {
+  width: 20em;
+  height: 3em;
+}
+
+button {
+  width: auto;
+  height: auto;
+}
+
+label {
+  height: auto;
+  width: auto;
+  margin-bottom: 1em;
+}
+
+/* search */
+.search-button {
+  background-color: grey;
+  width: 3em;
+}
+
+.search-area{
+  display: flex;
+  width: auto;
+  height: auto;
+  margin-right: 5em;
+}
+
+.search-img {
+  width: 2em;
+  height: 2em;
+}
+
+/* left column */
+.left-column {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #587A8A;
+  border-right: 2px solid black;
+}
+
+/* left column  and containers */
+.button-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+}
+
+.task-title-input {
+  width: 34em;
+  height: 3em;
+}
+
+.task-input {
+  width: 28em;
+}
+
+.task-item {
+  display: flex;
+  height: auto;
+}
+
+.make-clear-container {
+  height: auto;
+  width: auto;
+  border-bottom: 1px solid #44697A ;
+}
+
+/* specific left column buttons */
+.add-task-button {
+  background-color: #1f1f3D;
+  color: white;
+  width: 6em;
+  height: 3.4em;
+}
+
+.make-clear-container button {
+  margin-bottom: 1em;
+  width: 16em;
+  height: 2em;
+  background-color: #1f1f3D;
+  color: white;
+  font-size: 1.5em;
+}
+
+.filter-button {
+  margin-top: 1em;
+  width: 16em;
+  height: 2em;
+  background-color: #1f1f3D;
+  color: white;
+  font-size: 1.5em;
+}
