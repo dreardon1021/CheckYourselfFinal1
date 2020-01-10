@@ -4,14 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Check Yo' Self</title>
 </head>
 <body>
   <head>
     <nav>
-      <h2>Check <span>Yo'</span>Self</h2>
-      <input class="nav-search"type="text" name="search" value="search">
+      <h2>Check <span>Yo'</span> Self</h2>
+      <div class="search-area">
+        <button class="search-button" type="button" name="button"><img class="search-img"src="assets/search.svg" alt="search"></button>
+        <input class="nav-search"type="text" name="search" placeholder="search">
+      </div>
     </nav>
+  <main>
+    <section class="left-column">
+      <div class="button-input task-title-container">
+        <label for="task-input">Task Title</label>
+        <input type="text" name="task-title">
+      </div>
+      <div class="current-task-list">
+
+      </div>
+      <div class="button-input task-item-container">
+        <label for="task-item">Task Item</label>
+        <div class="task-item">
+          <input type="text" name="task-item">
+          <button class="add-task-button" type="button" name="button">Add Task</button>
+        </div>
+      </div>
+      <div class="button-input make-clear-container">
+        <button type="button" name="button">Make Task List</button>
+        <button type="button" name="button">Clear All</button>
+      </div>
+      <button class="filter-container" type="button" name="button">Filter by Urgency</button>
+    </section>
+    <section class="right-column">
+
+    </section>
+  </main>
   </head>
 
 </body>

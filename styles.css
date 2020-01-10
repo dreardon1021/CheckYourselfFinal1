@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+span {
+  color: #ffc30c;
+}
+
+div {
+  width: auto;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 5em;
+  background-color: #1f1f3D;
+}
+
+h2 {
+  width: auto;
+  height: auto;
+  margin-left: 1.5em;
+  font-size: 3em;
+  color: white;
+}
+
+input {
+  width: 20em;
+  height: 3em;
+}
+
+button {
+  width: auto;
+  height: auto;
+}
+
+.search-button {
+  background-color: grey;
+  width: 3em;
+}
+
+.search-area{
+  display: flex;
+  width: auto;
+  height: auto;
+  margin-right: 5em;
+}
+
+.search-img {
+  width: 2em;
+  height: 2em;
+}
+
+.left-column {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #587A8A;
+  border-right: 2px solid black;
+}
+
+.button-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-item {
+  display: flex;
+  height: auto;
+}
+
+.add-task-button {
+  width: 3em;
+  height: 3em;
+  font-size: ;
+}
