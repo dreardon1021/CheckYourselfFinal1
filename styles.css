@@ -8,6 +8,7 @@
 main {
   display: flex;
   flex-direction: row;
+  background-color: #f3f6f7;
 }
 
 span {
@@ -15,6 +16,11 @@ span {
 }
 
 div {
+  width: auto;
+  height: auto;
+}
+
+p {
   width: auto;
   height: auto;
 }
@@ -46,10 +52,23 @@ button {
   height: auto;
 }
 
+button:hover {
+  background-color: #f3f6f7;
+  color: #1f1f3D;
+}
+
 label {
   height: auto;
   width: auto;
   margin-bottom: 1em;
+}
+
+h5 {
+  width: auto;
+  height: auto;
+  border-bottom: 1px solid #f3f6f7;
+  font-size: 1.5em;
+  margin: .5em;
 }
 
 /* search */
@@ -124,6 +143,11 @@ label {
   font-size: 1.5em;
 }
 
+.make-clear-container button:hover {
+  background-color: #f3f6f7;
+  color: #1f1f3D;
+}
+
 .filter-button {
   margin-top: 1em;
   width: 16em;
@@ -131,4 +155,73 @@ label {
   background-color: #1f1f3D;
   color: white;
   font-size: 1.5em;
+}
+
+.right-column {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f3f6f7;
+}
+
+/* cards */
+.task-card {
+  width: 40%;
+  height: auto;
+  border: 2px solid grey;
+  margin: 2em;
+  overflow: auto;
+}
+
+.checkbox {
+  width: 1em;
+  height: 1em;
+}
+
+.single-task {
+  display: flex;
+  justify-content:space-around;
+  flex-direction: row;
+  margin: .5em;
+}
+
+.task-card-title {
+  border-bottom: 1px solid grey;
+  margin-top: 1em;
+  height: auto;
+}
+
+.task-card-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid grey;
+  height: fit-content;
+}
+
+.task-card-footer p {
+  position: relative;
+  right: .3em;
+  margin: .2em 0 0 0;
+}
+
+.urgent{
+  display: flex;
+  margin: .6em .4em .4em 1em;
+  flex-direction: column
+}
+
+.urgent-static {
+  width: 2em;
+  height: 2em;
+}
+
+.close-button-card-container {
+  display: flex;
+  margin: .6em 1em .4em .4em;
+  flex-direction: column
+}
+
+.close-button {
+  width: 2em;
+  height: 2em;
 }
