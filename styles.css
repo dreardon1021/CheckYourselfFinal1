@@ -200,8 +200,8 @@ h5 {
 
 /* cards */
 .task-card {
-  width: 40%;
-  height: auto;
+  width: 25em;
+  height: fit-content;
   border: 2px solid grey;
   margin: 2em;
   overflow: auto;

@@ -77,6 +77,7 @@ function closeLeftTask(event) {
 function clearInputs() {
   taskInput.value = '';
   taskTitle.value = '';
+  removeTasksOnSave();
   clearButton.disabled = true;
 };
 
@@ -107,7 +108,7 @@ function enableAddTaskButton() {
 };
 
 function enableListButton() {
-  if(toDoList.tasks !== [] && taskTitle.value !== '') {
+  if(toDoList.tasks.length !== 0 && taskTitle.value !== '') {
     makeTaskListButton.disabled = false;
   };
 };
@@ -122,7 +123,7 @@ function enableClearButton() {
 function addTaskCard() {
   noTaskMessage.remove();
   rightColumn.insertAdjacentHTML('afterbegin', `<div class="task-card">
-  <div class="task-card-title">
+  <div class="task-card-title ${toDoList.id}">
     <h5>${toDoList.title}</h5>
   </div>
     <div class="task-card-body">
@@ -149,6 +150,7 @@ function addListToCard() {
   var taskCardItem = document.createElement('p');
   var text = document.createTextNode(`${toDoList.tasks[i].name}`);
   newTaskCardList.classList.add('single-task');
+  newTaskCardList.classList.add(toDoList.tasks[i].id)
   checkImage.classList.add('checkbox');
   checkImage.setAttribute('src', 'assets/checkbox.svg');
   newTaskCardList.appendChild(checkImage);
@@ -169,3 +171,10 @@ function checkOffBox(event) {
     parentNode.prepend(checkedOffImage);
   };
 };
+//
+// function updateCompletedDM() {
+//   for (var i = 0; i < toDoList.tasks.length){
+//     if (event.target.className === ) {
+//
+//   };
+// }
