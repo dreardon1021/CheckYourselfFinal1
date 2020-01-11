@@ -20,12 +20,17 @@ leftTaskContainer.addEventListener('click', closeLeftTask);
 addTaskButton.addEventListener('click', addSingleTask);
 makeTaskListButton.addEventListener('click', taskButtonEvents);
 clearButton.addEventListener('click', clearInputs);
+rightColumn.addEventListener('click', taskCardEvents);
 taskInput.addEventListener('input', buttonEnables);
 taskTitle.addEventListener('input', buttonEnables);
 
 //Event Handelers
 window.onload = function() {
   listsRemainOnRefresh();
+}
+
+function taskCardEvents() {
+  checkOffBox(event);
 }
 
 function buttonEnables() {
@@ -133,7 +138,7 @@ function addTaskCard() {
         <p>Delete</p>
       </div>
     </div>
-    </div>`)
+  </div>`)
 };
 
 function addListToCard() {
@@ -150,5 +155,17 @@ function addListToCard() {
   newTaskCardList.appendChild(taskCardItem);
   taskCardItem.appendChild(text);
   cardBody.appendChild(newTaskCardList);
+  };
+};
+
+//task card interaction Functions
+function checkOffBox(event) {
+  if (event.target.classList.contains('checkbox')) {
+    var parentNode = event.target.parentNode;
+    var checkedOffImage = document.createElement('img');
+    event.target.parentNode.removeChild(event.target);
+    checkedOffImage.classList.add('checkbox-complete');
+    checkedOffImage.setAttribute('src', 'assets/checkbox-active.svg');
+    parentNode.prepend(checkedOffImage);
   };
 };
