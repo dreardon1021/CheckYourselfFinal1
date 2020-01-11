@@ -42,6 +42,14 @@ h2 {
   color: white;
 }
 
+h3 {
+  font-size: 4em;
+  color: lightgrey;
+  position: relative;
+  top: 4em;
+  left: 4em;
+}
+
 input {
   width: 20em;
   height: 3em;
@@ -207,7 +215,8 @@ h5 {
 }
 
 /* task card body */
-.checkbox {
+.checkbox,
+.checkbox-complete {
   width: 1em;
   height: 1em;
 }
