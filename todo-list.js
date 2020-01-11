@@ -1,21 +1,24 @@
-var taskList = []
-
 class ToDoList {
   constructor(id) {
     this.id = id;
     this.title = '';
-    this.tasks = taskList;
+    this.tasks = [];
+    this.urgent = false;
   }
-  saveToStorage(){
-
+  saveToStorage() {
+    var listToStore = this;
+    var stringifiedList = JSON.stringify(listToStore);
+    window.localStorage.setItem(this.id, stringifiedList);
   }
   deleteFromStorage() {
 
   }
-  updateToDo(){
+  updateToDo() {
 
   }
-  updateTask(){
+  updateTask() {
 
   };
 };
+
+var makeTaskListButton = document.querySelector('.make-list-button');
