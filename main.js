@@ -35,11 +35,11 @@ function buttonEnables() {
 }
 
 function taskButtonEvents(){
-  addTaskCard()
+  toDoList.title = taskTitle.value;
+  addTaskCard();
   addListToCard();
   removeTasksOnSave();
   toDoList.saveToStorage();
-  toDoList.title = taskTitle.value;
   makeTaskListButton.disabled = true;
   taskTitle.value = '';
   toDoList = new ToDoList(generateNum());
@@ -58,6 +58,7 @@ function listsRemainOnRefresh() {
   toDoList = parseList;
   addTaskCard()
   addListToCard()
+  toDoList = new ToDoList(generateNum());
   };
 };
 
@@ -117,7 +118,7 @@ function addTaskCard() {
   noTaskMessage.remove();
   rightColumn.insertAdjacentHTML('afterbegin', `<div class="task-card">
   <div class="task-card-title">
-    <h5>${taskTitle.value}</h5>
+    <h5>${toDoList.title}</h5>
   </div>
     <div class="task-card-body">
 
