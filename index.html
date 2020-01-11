@@ -34,44 +34,17 @@
           </div>
         </div>
         <div class="button-input make-clear-container">
-          <button type="button" name="button">Make Task List</button>
-          <button type="button" name="button">Clear All</button>
+          <button disabled class="make-list-button"type="button" name="button">Make Task List</button>
+          <button disabled class="clear-button"type="button" name="button">Clear All</button>
         </div>
         <button class="filter-button" type="button" name="button">Filter by Urgency</button>
       </section>
       <section class="right-column">
-          <!-- <h3>No current Tasks</h3> -->
-        <div class="task-card">
-          <div class="task-card-title">
-            <h5>Task Title</h5>
-          </div>
-            <div class="task-card-body">
-              <div class="single-task">
-                <img class="checkbox" src="assets/checkbox.svg" alt="empty-checkbox">
-                <p>This is some task</p>
-              </div>
-              <div class="single-task">
-                <img class="checkbox" src="assets/checkbox.svg" alt="empty-checkbox">
-                <p>This is some task</p>
-              </div>
-              <div class="single-task">
-                <img class="checkbox" src="assets/checkbox.svg" alt="empty-checkbox">
-                <p>This is some task</p>
-              </div>
-            </div>
-            <div class="task-card-footer">
-              <div class="urgent">
-                <img class="urgent-static" src="assets/urgent.svg" alt="urgent">
-                <p>Urgent</p>
-              </div>
-              <div class="close-button-card-container">
-                <img class="close-button"src="assets/delete.svg" alt="delete">
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
+          <h3 id="no-tasks">No current Tasks</h3>
       </section>
     </main>
   </body>
+  <script src="task.js"></script>
+  <script src="todo-list.js"></script>
   <script src="main.js"></script>
 </html>
