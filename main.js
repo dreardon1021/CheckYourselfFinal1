@@ -4,7 +4,8 @@ var toDoList = new ToDoList(generateNum());
 //querySelectors Buttons
 var closeButton = document.querySelector('.close-button');
 var addTaskButton = document.querySelector('.add-task-button');
-var makeTaskListButton = document.querySelector('.make-list-button')
+var makeTaskListButton = document.querySelector('.make-list-button');
+var clearButton = document.querySelector('.clear-button')
 //querySelectors Containers
 var leftTaskContainer = document.querySelector('.current-task-list');
 var rightColumn = document.querySelector('.right-column');
@@ -17,13 +18,16 @@ var noTaskMessage = document.querySelector('#no-tasks')
 // EventListeners
 leftTaskContainer.addEventListener('click', closeLeftTask);
 addTaskButton.addEventListener('click', addSingleTask);
-taskInput.addEventListener('input', buttonEnables);
 makeTaskListButton.addEventListener('click', addTaskCard)
-taskTitle.addEventListener('input', buttonEnables)
+clearButton.addEventListener('click', clearInputs)
+taskInput.addEventListener('input', buttonEnables);
+taskTitle.addEventListener('input', buttonEnables);
+
 
 function buttonEnables() {
   enableListButton();
   enableAddTaskButton();
+  enableClearButton();
 }
 
 //Globally used functions
@@ -37,6 +41,12 @@ function closeLeftTask(event) {
   if(event.target.classList.contains('close-button')) {
     event.target.parentNode.remove();
   };
+};
+
+function clearInputs() {
+  taskInput.value = '';
+  taskTitle.value = '';
+  clearButton.disabled = true;
 };
 
 function addSingleTask() {
@@ -67,6 +77,12 @@ function enableAddTaskButton() {
 function enableListButton() {
   if(taskInput.value !== '' && taskTitle.value !== '') {
     makeTaskListButton.disabled = false;
+  };
+};
+
+function enableClearButton() {
+  if (taskInput.value !== '' || taskTitle.value !== '') {
+    clearButton.disabled = false;
   };
 };
 
