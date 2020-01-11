@@ -138,7 +138,7 @@ function addTaskCard() {
         <p>Delete</p>
       </div>
     </div>
-    </div>`)
+  </div>`)
 };
 
 function addListToCard() {
