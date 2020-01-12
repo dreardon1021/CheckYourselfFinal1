@@ -30,6 +30,7 @@ window.onload = function() {
 }
 
 function taskCardEvents() {
+  updateCompletedDM(event);
   checkOffBox(event);
 }
 
@@ -61,8 +62,8 @@ function listsRemainOnRefresh() {
   var getList = window.localStorage.getItem(key);
   var parseList = JSON.parse(getList);
   toDoList = parseList;
-  addTaskCard()
-  addListToCard()
+  addTaskCard();
+  addListToCard();
   toDoList = new ToDoList(generateNum());
   };
 };
@@ -122,8 +123,8 @@ function enableClearButton() {
 // Add Task Card Functions
 function addTaskCard() {
   noTaskMessage.remove();
-  rightColumn.insertAdjacentHTML('afterbegin', `<div class="task-card">
-  <div class="task-card-title ${toDoList.id}">
+  rightColumn.insertAdjacentHTML('afterbegin', `<div class="task-card ${toDoList.id}">
+  <div class="task-card-title">
     <h5>${toDoList.title}</h5>
   </div>
     <div class="task-card-body">
@@ -150,7 +151,6 @@ function addListToCard() {
   var taskCardItem = document.createElement('p');
   var text = document.createTextNode(`${toDoList.tasks[i].name}`);
   newTaskCardList.classList.add('single-task');
-  newTaskCardList.classList.add(toDoList.tasks[i].id)
   checkImage.classList.add('checkbox');
   checkImage.setAttribute('src', 'assets/checkbox.svg');
   newTaskCardList.appendChild(checkImage);
@@ -162,19 +162,27 @@ function addListToCard() {
 
 //task card interaction Functions
 function checkOffBox(event) {
-  if (event.target.classList.contains('checkbox')) {
-    var parentNode = event.target.parentNode;
+  var target = event.target;
+  if (target.classList.contains('checkbox')) {
+    var parentNode =  target.parentNode;
     var checkedOffImage = document.createElement('img');
-    event.target.parentNode.removeChild(event.target);
+    target.parentNode.removeChild(target);
     checkedOffImage.classList.add('checkbox-complete');
     checkedOffImage.setAttribute('src', 'assets/checkbox-active.svg');
     parentNode.prepend(checkedOffImage);
   };
 };
-//
-// function updateCompletedDM() {
-//   for (var i = 0; i < toDoList.tasks.length){
-//     if (event.target.className === ) {
-//
-//   };
-// }
+
+function updateCompletedDM(event) {
+  for (var i = 0; i < window.localStorage.length; i++) {
+    var key = window.localStorage.key(i);
+    if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
+      var objectToChange = window.localStorage.getItem(key)
+      var parsedObject = JSON.parse(objectToChange);
+    };
+  };
+  for (var i = 0; i < parsedObject.tasks.length; i++) {
+    parsedObject.tasks[i].completed = true;
+    console.log(parsedObject.tasks[i].completed)
+  }
+}
