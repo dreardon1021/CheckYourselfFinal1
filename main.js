@@ -30,7 +30,6 @@ window.onload = function() {
 }
 
 function taskCardEvents() {
-  updateCompletedDM(event);
   checkOffBox(event);
 }
 
@@ -151,38 +150,32 @@ function addListToCard() {
   var taskCardItem = document.createElement('p');
   var text = document.createTextNode(`${toDoList.tasks[i].name}`);
   newTaskCardList.classList.add('single-task');
+  newTaskCardList.classList.add(`${toDoList.tasks[i].id}`)
   checkImage.classList.add('checkbox');
   checkImage.setAttribute('src', 'assets/checkbox.svg');
   newTaskCardList.appendChild(checkImage);
   newTaskCardList.appendChild(taskCardItem);
   taskCardItem.appendChild(text);
   cardBody.appendChild(newTaskCardList);
+  if (toDoList.tasks[i].completed === true) {
+    checkImage.classList.add('checkbox');
+    checkImage.setAttribute('src', 'assets/checkbox-active.svg');
+  } else{
+    checkImage.classList.add('checkbox-complete');
+    checkImage.setAttribute('src', 'assets/checkbox.svg');
+    }
   };
 };
 
 //task card interaction Functions
 function checkOffBox(event) {
-  var target = event.target;
-  if (target.classList.contains('checkbox')) {
-    var parentNode =  target.parentNode;
+  if (event.target.classList.contains('checkbox')) {
+    toDoList.updateTask(event);
+    var parentNode =  event.target.parentNode;
     var checkedOffImage = document.createElement('img');
-    target.parentNode.removeChild(target);
+    event.target.parentNode.removeChild(event.target);
     checkedOffImage.classList.add('checkbox-complete');
     checkedOffImage.setAttribute('src', 'assets/checkbox-active.svg');
     parentNode.prepend(checkedOffImage);
   };
 };
-
-function updateCompletedDM(event) {
-  for (var i = 0; i < window.localStorage.length; i++) {
-    var key = window.localStorage.key(i);
-    if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
-      var objectToChange = window.localStorage.getItem(key)
-      var parsedObject = JSON.parse(objectToChange);
-    };
-  };
-  for (var i = 0; i < parsedObject.tasks.length; i++) {
-    parsedObject.tasks[i].completed = true;
-    console.log(parsedObject.tasks[i].completed)
-  }
-}
