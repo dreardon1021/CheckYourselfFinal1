@@ -61,8 +61,8 @@ function listsRemainOnRefresh() {
   var getList = window.localStorage.getItem(key);
   var parseList = JSON.parse(getList);
   toDoList = parseList;
-  addTaskCard()
-  addListToCard()
+  addTaskCard();
+  addListToCard();
   toDoList = new ToDoList(generateNum());
   };
 };
@@ -77,6 +77,7 @@ function closeLeftTask(event) {
 function clearInputs() {
   taskInput.value = '';
   taskTitle.value = '';
+  removeTasksOnSave();
   clearButton.disabled = true;
 };
 
@@ -107,7 +108,7 @@ function enableAddTaskButton() {
 };
 
 function enableListButton() {
-  if(toDoList.tasks !== [] && taskTitle.value !== '') {
+  if(toDoList.tasks.length !== 0 && taskTitle.value !== '') {
     makeTaskListButton.disabled = false;
   };
 };
@@ -121,7 +122,7 @@ function enableClearButton() {
 // Add Task Card Functions
 function addTaskCard() {
   noTaskMessage.remove();
-  rightColumn.insertAdjacentHTML('afterbegin', `<div class="task-card">
+  rightColumn.insertAdjacentHTML('afterbegin', `<div class="task-card ${toDoList.id}">
   <div class="task-card-title">
     <h5>${toDoList.title}</h5>
   </div>
@@ -149,19 +150,28 @@ function addListToCard() {
   var taskCardItem = document.createElement('p');
   var text = document.createTextNode(`${toDoList.tasks[i].name}`);
   newTaskCardList.classList.add('single-task');
+  newTaskCardList.classList.add(`${toDoList.tasks[i].id}`)
   checkImage.classList.add('checkbox');
   checkImage.setAttribute('src', 'assets/checkbox.svg');
   newTaskCardList.appendChild(checkImage);
   newTaskCardList.appendChild(taskCardItem);
   taskCardItem.appendChild(text);
   cardBody.appendChild(newTaskCardList);
+  if (toDoList.tasks[i].completed === true) {
+    checkImage.classList.add('checkbox');
+    checkImage.setAttribute('src', 'assets/checkbox-active.svg');
+  } else{
+    checkImage.classList.add('checkbox-complete');
+    checkImage.setAttribute('src', 'assets/checkbox.svg');
+    }
   };
 };
 
 //task card interaction Functions
 function checkOffBox(event) {
   if (event.target.classList.contains('checkbox')) {
-    var parentNode = event.target.parentNode;
+    toDoList.updateTask(event);
+    var parentNode =  event.target.parentNode;
     var checkedOffImage = document.createElement('img');
     event.target.parentNode.removeChild(event.target);
     checkedOffImage.classList.add('checkbox-complete');
