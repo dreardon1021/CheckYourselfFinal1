@@ -140,7 +140,6 @@ function addTaskCard() {
       </div>
       <div class="close-button-card-container">
         <img class="close-button"src="assets/delete.svg" alt="delete">
-        <p>Delete</p>
       </div>
     </div>
   </div>`)
