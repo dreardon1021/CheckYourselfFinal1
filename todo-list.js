@@ -19,7 +19,6 @@ class ToDoList {
   updateTask(event) {
     for (var i = 0; i < window.localStorage.length; i++) {
       var key = window.localStorage.key(i);
-      console.log(event.target)
       if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
         var objectToChange = window.localStorage.getItem(key)
         var parsedObject = JSON.parse(objectToChange);

@@ -30,7 +30,10 @@ window.onload = function() {
 }
 
 function taskCardEvents() {
+  toDoList.updateTask(event)
+  var trueCheck = checkIfTrue(event);
   checkOffBox(event);
+  enableCloseButton(trueCheck);
 }
 
 function buttonEnables() {
@@ -170,12 +173,35 @@ function addListToCard() {
 //task card interaction Functions
 function checkOffBox(event) {
   if (event.target.classList.contains('checkbox')) {
-    toDoList.updateTask(event);
     var parentNode =  event.target.parentNode;
     var checkedOffImage = document.createElement('img');
     event.target.parentNode.removeChild(event.target);
     checkedOffImage.classList.add('checkbox-complete');
     checkedOffImage.setAttribute('src', 'assets/checkbox-active.svg');
     parentNode.prepend(checkedOffImage);
+  };
+};
+
+
+function checkIfTrue(event) {
+  for (var i = 0; i < window.localStorage.length; i++) {
+    var key = window.localStorage.key(i);
+    console.log(event.target.parentNode.parentNode.parentNode.classList)
+    if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
+      var objectToChange = window.localStorage.getItem(key)
+      var parsedObject = JSON.parse(objectToChange);
+    };
+  };
+    var parsedTaskValues = []
+    var isTrue = (parsedTaskValues) => parsedTaskValues === true;
+    for (var i = 0; i < parsedObject.tasks.length; i++) {
+      parsedTaskValues.push(parsedObject.tasks[i].completed)
+  };
+  return parsedTaskValues.every(isTrue);
+};
+
+function enableCloseButton(trueCheck) {
+  if(trueCheck == true){
+    console.log(trueCheck)
   };
 };
