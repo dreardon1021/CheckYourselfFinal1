@@ -12,6 +12,7 @@ var rightColumn = document.querySelector('.right-column');
 //querySelectors Inputs
 var taskInput = document.querySelector('.task-input');
 var taskTitle = document.querySelector('.task-title-input');
+var searchInput = document.querySelector('.nav-search');
 // querySelector generalElements
 var noTaskMessage = document.querySelector('#no-tasks');
 
@@ -23,19 +24,24 @@ clearButton.addEventListener('click', clearInputs);
 rightColumn.addEventListener('click', taskCardEvents);
 taskInput.addEventListener('input', buttonEnables);
 taskTitle.addEventListener('input', buttonEnables);
+searchInput.addEventListener('input', searchFieldEvents)
 
 //Event Handelers
 window.onload = function() {
   listsRemainOnRefresh();
 }
 
+function searchFieldEvents() {
+  removeCardsOnSearch();
+}
+
 function taskCardEvents() {
-  toDoList.updateTask(event)
+  toDoList.updateTask(event);
   var trueCheck = checkIfTrue(event);
   enableCloseButton(trueCheck, event);
   checkOffBox(event);
-  deleteTaskCard(event)
-  changeUrgentImage(event)
+  deleteTaskCard(event);
+  changeUrgentImage(event);
 }
 
 function buttonEnables() {
@@ -44,7 +50,7 @@ function buttonEnables() {
   enableClearButton();
 }
 
-function taskButtonEvents(){
+function taskButtonEvents() {
   toDoList.title = taskTitle.value;
   addTaskCard();
   addListToCard();
@@ -57,7 +63,7 @@ function taskButtonEvents(){
 
 //Globally used functions
 function generateNum() {
-  return Math.floor(Math.random() * 10000)
+  return Math.floor(Math.random() * 10000);
 };
 
 function listsRemainOnRefresh() {
@@ -126,8 +132,15 @@ function enableClearButton() {
 
 // Add Task Card Functions
 function addTaskCard() {
+  if(toDoList.urgent === true){
+    urgentClass = 'task-card-urgent';
+    urgentSrc = 'urgent-active'
+  } else {
+    urgentClass = 'task-card';
+    urgentSrc = 'urgent';
+  }
   noTaskMessage.remove();
-  rightColumn.insertAdjacentHTML('afterbegin', `<div class="task-card ${toDoList.id}">
+  rightColumn.insertAdjacentHTML('afterbegin', `<div class="${urgentClass} ${toDoList.id}">
   <div class="task-card-title">
     <h5>${toDoList.title}</h5>
   </div>
@@ -136,14 +149,14 @@ function addTaskCard() {
     </div>
     <div class="task-card-footer">
       <div class="urgent">
-        <img class="urgent-static" src="assets/urgent.svg" alt="urgent">
+        <img class="urgent-static" src="assets/${urgentSrc}.svg" alt="urgent">
         <p>Urgent</p>
       </div>
       <div class="close-button-card-container">
         <img class="close-button"src="assets/delete.svg" alt="delete">
       </div>
     </div>
-  </div>`)
+  </div>`);
 };
 
 function addListToCard() {
@@ -154,7 +167,7 @@ function addListToCard() {
   var taskCardItem = document.createElement('p');
   var text = document.createTextNode(`${toDoList.tasks[i].name}`);
   newTaskCardList.classList.add('single-task');
-  newTaskCardList.classList.add(`${toDoList.tasks[i].id}`)
+  newTaskCardList.classList.add(`${toDoList.tasks[i].id}`);
   checkImage.classList.add('checkbox');
   checkImage.setAttribute('src', 'assets/checkbox.svg');
   newTaskCardList.appendChild(checkImage);
@@ -188,14 +201,14 @@ function checkIfTrue(event) {
   for (var i = 0; i < window.localStorage.length; i++) {
     var key = window.localStorage.key(i);
     if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
-      var objectToChange = window.localStorage.getItem(key)
+      var objectToChange = window.localStorage.getItem(key);
       var parsedObject = JSON.parse(objectToChange);
     };
   };
     var parsedTaskValues = []
-    var isTrue = (parsedTaskValues) => parsedTaskValues === true;
+    var isTrue = parsedTaskValues => parsedTaskValues === true;
     for (var i = 0; i < parsedObject.tasks.length; i++) {
-      parsedTaskValues.push(parsedObject.tasks[i].completed)
+      parsedTaskValues.push(parsedObject.tasks[i].completed);
   };
   return parsedTaskValues.every(isTrue);
 };
@@ -205,17 +218,17 @@ function enableCloseButton(trueCheck, event) {
     var children = event.target.parentNode.parentNode.parentNode.children;
     children[2].children[1].children[0].remove();
     var redClose = document.createElement('img');
-    redClose.classList.add('close-button-red')
-    redClose.setAttribute('src', 'assets/delete-active.svg')
+    redClose.classList.add('close-button-red');
+    redClose.setAttribute('src', 'assets/delete-active.svg');
     children[2].children[1].prepend(redClose);
   };
 };
 
 function deleteTaskCard(event) {
   if (event.target.classList.contains('close-button-red')) {
-    toDoList.deleteFromStorage(event)
+    toDoList.deleteFromStorage(event);
     event.target.parentNode.parentNode.parentNode.remove();
-  }
+  };
   if(window.localStorage.length === 0) {
     noTasks = document.createElement('h3');
     noTasks.setAttribute('id', 'no-tasks');
@@ -228,11 +241,16 @@ function changeUrgentImage(event) {
   if(event.target.classList.contains('urgent-static')) {
     toDoList.updateToDo(event);
     var urgentContainer = event.target.parentNode;
-    var urgentRed = document.createElement('img')
-    urgentRed.setAttribute('src', 'assets/urgent-active.svg')
-    urgentRed.classList.add('urgent-static')
-    event.target.parentNode.parentNode.parentNode.style.background = "#ffe89D"
+    var urgentRed = document.createElement('img');
+    urgentRed.setAttribute('src', 'assets/urgent-active.svg');
+    urgentRed.classList.add('urgent-static');
+    event.target.parentNode.parentNode.parentNode.style.background = "#ffe89D";
     event.target.remove();
     urgentContainer.prepend(urgentRed);
   };
 };
+
+//search input Functions
+function removeCardsOnSearch() {
+
+}

@@ -206,6 +206,15 @@ h5 {
   overflow: auto;
 }
 
+.task-card-urgent {
+  width: 25em;
+  height: fit-content;
+  border: 2px solid grey;
+  margin: 2em;
+  overflow: auto;
+  background-color: #ffe89D;
+}
+
 /* task card header */
 .task-card-title {
   border-bottom: 1px solid grey;
@@ -264,10 +273,12 @@ h5 {
 
 .close-button {
   width: 2em;
+  height: 2em;
 }
 
 .close-button-red {
   width: 2em;
+  height: 2em;
 }
 
 button:disabled {
