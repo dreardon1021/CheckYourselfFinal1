@@ -10,16 +10,20 @@ class ToDoList {
     var stringifiedList = JSON.stringify(listToStore);
     window.localStorage.setItem(this.id, stringifiedList);
   }
-  deleteFromStorage() {
-
-  }
+  deleteFromStorage(event) {
+    for (var i = 0; i < window.localStorage.length; i++) {
+      var key = window.localStorage.key(i);
+      if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
+        window.localStorage.removeItem(key)
+      };
+    };
+  };
   updateToDo() {
 
   }
   updateTask(event) {
     for (var i = 0; i < window.localStorage.length; i++) {
       var key = window.localStorage.key(i);
-      console.log(event.target)
       if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
         var objectToChange = window.localStorage.getItem(key)
         var parsedObject = JSON.parse(objectToChange);

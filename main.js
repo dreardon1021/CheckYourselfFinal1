@@ -30,7 +30,11 @@ window.onload = function() {
 }
 
 function taskCardEvents() {
+  toDoList.updateTask(event)
+  var trueCheck = checkIfTrue(event);
+  enableCloseButton(trueCheck, event);
   checkOffBox(event);
+  deleteTaskCard(event)
 }
 
 function buttonEnables() {
@@ -136,7 +140,6 @@ function addTaskCard() {
       </div>
       <div class="close-button-card-container">
         <img class="close-button"src="assets/delete.svg" alt="delete">
-        <p>Delete</p>
       </div>
     </div>
   </div>`)
@@ -170,12 +173,53 @@ function addListToCard() {
 //task card interaction Functions
 function checkOffBox(event) {
   if (event.target.classList.contains('checkbox')) {
-    toDoList.updateTask(event);
     var parentNode =  event.target.parentNode;
     var checkedOffImage = document.createElement('img');
     event.target.parentNode.removeChild(event.target);
     checkedOffImage.classList.add('checkbox-complete');
     checkedOffImage.setAttribute('src', 'assets/checkbox-active.svg');
     parentNode.prepend(checkedOffImage);
+  };
+};
+
+
+function checkIfTrue(event) {
+  for (var i = 0; i < window.localStorage.length; i++) {
+    var key = window.localStorage.key(i);
+    if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
+      var objectToChange = window.localStorage.getItem(key)
+      var parsedObject = JSON.parse(objectToChange);
+    };
+  };
+    var parsedTaskValues = []
+    var isTrue = (parsedTaskValues) => parsedTaskValues === true;
+    for (var i = 0; i < parsedObject.tasks.length; i++) {
+      parsedTaskValues.push(parsedObject.tasks[i].completed)
+  };
+  console.log(parsedTaskValues.every(isTrue))
+  return parsedTaskValues.every(isTrue);
+};
+
+function enableCloseButton(trueCheck, event) {
+  if(trueCheck == true && event.target.classList.contains('checkbox')) {
+    var children = event.target.parentNode.parentNode.parentNode.children;
+    children[2].children[1].children[0].remove();
+    var redClose = document.createElement('img');
+    redClose.classList.add('close-button-red')
+    redClose.setAttribute('src', 'assets/delete-active.svg')
+    children[2].children[1].prepend(redClose);
+  };
+};
+
+function deleteTaskCard(event) {
+  if (event.target.classList.contains('close-button-red')) {
+    toDoList.deleteFromStorage(event)
+    event.target.parentNode.parentNode.parentNode.remove();
+  }
+  if(window.localStorage.length === 0) {
+    noTasks = document.createElement('h3');
+    noTasks.setAttribute('id', 'no-tasks');
+    noTasks.innerHTML = 'No Current Tasks';
+    rightColumn.prepend(noTasks);
   };
 };
