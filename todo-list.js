@@ -19,8 +19,13 @@ class ToDoList {
     };
   };
   updateToDo() {
-
-  }
+    for (var i = 0; i < window.localStorage.length; i++) {
+      var key = window.localStorage.key(i);
+      if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
+        
+      };
+    };
+  };
   updateTask(event) {
     for (var i = 0; i < window.localStorage.length; i++) {
       var key = window.localStorage.key(i);

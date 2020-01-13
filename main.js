@@ -35,6 +35,7 @@ function taskCardEvents() {
   enableCloseButton(trueCheck, event);
   checkOffBox(event);
   deleteTaskCard(event)
+  changeUrgentImage(event)
 }
 
 function buttonEnables() {
@@ -196,7 +197,6 @@ function checkIfTrue(event) {
     for (var i = 0; i < parsedObject.tasks.length; i++) {
       parsedTaskValues.push(parsedObject.tasks[i].completed)
   };
-  console.log(parsedTaskValues.every(isTrue))
   return parsedTaskValues.every(isTrue);
 };
 
@@ -221,5 +221,17 @@ function deleteTaskCard(event) {
     noTasks.setAttribute('id', 'no-tasks');
     noTasks.innerHTML = 'No Current Tasks';
     rightColumn.prepend(noTasks);
+  };
+};
+
+function changeUrgentImage(event) {
+  if(event.target.classList.contains('urgent-static')) {
+    var urgentContainer = event.target.parentNode;
+    var urgentRed = document.createElement('img')
+    urgentRed.setAttribute('src', 'assets/urgent-active.svg')
+    urgentRed.classList.add('urgent-static')
+    event.target.parentNode.parentNode.parentNode.style.background = "#ffe89D"
+    event.target.remove();
+    urgentContainer.prepend(urgentRed);
   };
 };
