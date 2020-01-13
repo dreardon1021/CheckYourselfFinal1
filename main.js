@@ -226,6 +226,7 @@ function deleteTaskCard(event) {
 
 function changeUrgentImage(event) {
   if(event.target.classList.contains('urgent-static')) {
+    toDoList.updateToDo(event);
     var urgentContainer = event.target.parentNode;
     var urgentRed = document.createElement('img')
     urgentRed.setAttribute('src', 'assets/urgent-active.svg')

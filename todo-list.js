@@ -18,13 +18,17 @@ class ToDoList {
       };
     };
   };
-  updateToDo() {
+  updateToDo(event) {
     for (var i = 0; i < window.localStorage.length; i++) {
       var key = window.localStorage.key(i);
       if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
-        
+        var objectToChange = window.localStorage.getItem(key)
+        var parsedObject = JSON.parse(objectToChange);
       };
     };
+    parsedObject.urgent = true;
+    var reStringObject = JSON.stringify(parsedObject)
+    window.localStorage.setItem(parsedObject.id, reStringObject)
   };
   updateTask(event) {
     for (var i = 0; i < window.localStorage.length; i++) {
