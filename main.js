@@ -217,4 +217,10 @@ function deleteTaskCard(event) {
     toDoList.deleteFromStorage(event)
     event.target.parentNode.parentNode.parentNode.remove();
   }
-}
+  if(window.localStorage.length === 0) {
+    noTasks = document.createElement('h3');
+    noTasks.setAttribute('id', 'no-tasks');
+    noTasks.innerHTML = 'No Current Tasks';
+    rightColumn.prepend(noTasks);
+  };
+};
