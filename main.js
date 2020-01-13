@@ -254,9 +254,8 @@ function changeUrgentImage(event) {
 //search input Functions
 function removeCardsOnSearch() {
   for(var i = 0; i < rightColumn.children.length; i++) {
-    var titleToUpper = rightColumn.children[i].children[0].children[0].innerHTML.toUpperCase();
+    var titleToUpper = rightColumn.children[i].textContent.toUpperCase();
     var inputToUpper = searchInput.value.toUpperCase();
-    console.log(titleToUpper.indexOf(inputToUpper))
     if(searchInput.value !== '' && titleToUpper.indexOf(inputToUpper) > -1) {
       rightColumn.children[i].style.display = 'block';
     } else {
