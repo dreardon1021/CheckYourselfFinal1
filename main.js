@@ -24,7 +24,8 @@ clearButton.addEventListener('click', clearInputs);
 rightColumn.addEventListener('click', taskCardEvents);
 taskInput.addEventListener('input', buttonEnables);
 taskTitle.addEventListener('input', buttonEnables);
-searchInput.addEventListener('input', searchFieldEvents)
+searchInput.addEventListener('keyup', searchFieldEvents)
+
 
 //Event Handelers
 window.onload = function() {
@@ -205,11 +206,11 @@ function checkIfTrue(event) {
       var parsedObject = JSON.parse(objectToChange);
     };
   };
-    var parsedTaskValues = []
-    var isTrue = parsedTaskValues => parsedTaskValues === true;
+    var parsedTaskValues = [];
     for (var i = 0; i < parsedObject.tasks.length; i++) {
       parsedTaskValues.push(parsedObject.tasks[i].completed);
   };
+  var isTrue = parsedTaskValues => parsedTaskValues === true;
   return parsedTaskValues.every(isTrue);
 };
 
@@ -252,5 +253,17 @@ function changeUrgentImage(event) {
 
 //search input Functions
 function removeCardsOnSearch() {
-
-}
+  for(var i = 0; i < rightColumn.children.length; i++) {
+    var titleToUpper = rightColumn.children[i].children[0].children[0].innerHTML.toUpperCase();
+    var inputToUpper = searchInput.value.toUpperCase();
+    console.log(titleToUpper.indexOf(inputToUpper))
+    if(searchInput.value !== '' && titleToUpper.indexOf(inputToUpper) > -1) {
+      rightColumn.children[i].style.display = 'block';
+    } else {
+      rightColumn.children[i].style.display = 'none';
+    };
+    if (searchInput.value.length === 0) {
+      rightColumn.children[i].style.display = 'block';
+    };
+  };
+};
