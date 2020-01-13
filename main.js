@@ -32,8 +32,9 @@ window.onload = function() {
 function taskCardEvents() {
   toDoList.updateTask(event)
   var trueCheck = checkIfTrue(event);
+  enableCloseButton(trueCheck, event);
   checkOffBox(event);
-  enableCloseButton(trueCheck);
+  deleteTaskCard(event)
 }
 
 function buttonEnables() {
@@ -186,7 +187,6 @@ function checkOffBox(event) {
 function checkIfTrue(event) {
   for (var i = 0; i < window.localStorage.length; i++) {
     var key = window.localStorage.key(i);
-    console.log(event.target.parentNode.parentNode.parentNode.classList)
     if (event.target.parentNode.parentNode.parentNode.classList.contains(key)) {
       var objectToChange = window.localStorage.getItem(key)
       var parsedObject = JSON.parse(objectToChange);
@@ -197,11 +197,24 @@ function checkIfTrue(event) {
     for (var i = 0; i < parsedObject.tasks.length; i++) {
       parsedTaskValues.push(parsedObject.tasks[i].completed)
   };
+  console.log(parsedTaskValues.every(isTrue))
   return parsedTaskValues.every(isTrue);
 };
 
-function enableCloseButton(trueCheck) {
-  if(trueCheck == true){
-    console.log(trueCheck)
+function enableCloseButton(trueCheck, event) {
+  if(trueCheck == true && event.target.classList.contains('checkbox')) {
+    var children = event.target.parentNode.parentNode.parentNode.children;
+    children[2].children[1].children[0].remove();
+    var redClose = document.createElement('img');
+    redClose.classList.add('close-button-red')
+    redClose.setAttribute('src', 'assets/delete-active.svg')
+    children[2].children[1].prepend(redClose);
   };
 };
+
+function deleteTaskCard(event) {
+  if (event.target.classList.contains('close-button-red')) {
+    toDoList.deleteFromStorage(event)
+    event.target.parentNode.parentNode.parentNode.remove();
+  }
+}
