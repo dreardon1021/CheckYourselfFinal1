@@ -256,7 +256,10 @@ function checkIfTrue(event) {
     for (var i = 0; i < parsedObject.tasks.length; i++) {
       parsedTaskValues.push(parsedObject.tasks[i].completed);
   };
-  var isTrue = parsedTaskValues => parsedTaskValues === true;
+    function isTrue(element, index, array) {
+      return element = true;
+    }
+  // var isTrue = parsedTaskValues => parsedTaskValues === true;
   return parsedTaskValues.every(isTrue);
 };
 
@@ -297,23 +300,17 @@ function changeUrgentImage(event) {
     event.target.parentNode.parentNode.parentNode.classList.remove('task-card')
     event.target.remove();
     urgentContainer.prepend(urgentRed);
-    toggleUrgentMessage();
+    toggleUrgentMessage()
   };
 };
 
 function toggleUrgentMessage() {
   for(var i = 0; i < rightColumn.children.length; i++) {
     if(rightColumn.children[i].classList.contains('task-card-urgent')) {
-      console.log('test')
       noUrgentMessage.remove();
-    } else {
-      noUrgent = document.createElement('h5');
-      noUrgent.setAttribute('id', 'no-urgent-message');
-      noUrgent.innerHTML = 'No current urgent task lists';
-      urgencyContainer.prepend(noUrgent)
     };
   };
-};
+};  
 
 //search input Functions
 function searchAllCards() {
