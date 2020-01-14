@@ -20,4 +20,4 @@ sure it will get extremley more intensive.)
 
 
 ![My Comp](https://user-images.githubusercontent.com/56371796/72388091-449efb80-36e2-11ea-9272-d0119be3e509.png)
-![userClicksComp] (https://user-images.githubusercontent.com/56371796/72388249-b414eb00-36e2-11ea-8401-254f55026e6c.png)
+![userClicksComp](https://user-images.githubusercontent.com/56371796/72388249-b414eb00-36e2-11ea-8401-254f55026e6c.png)
