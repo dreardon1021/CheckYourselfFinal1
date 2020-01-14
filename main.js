@@ -58,9 +58,6 @@ function taskCardEvents() {
   checkOffBox(event);
   deleteTaskCard(event);
   changeUrgentImage(event);
-  if(event.target.classList.contains('close-button-red')){
-    toggleUrgentMessage()
-  }
 }
 
 function buttonEnables() {
@@ -310,7 +307,7 @@ function toggleUrgentMessage() {
       noUrgentMessage.remove();
     };
   };
-};  
+};
 
 //search input Functions
 function searchAllCards() {
