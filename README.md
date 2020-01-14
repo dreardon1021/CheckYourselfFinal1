@@ -18,5 +18,5 @@ project was easier then build a bear simply beacuse I did build a bear. Ive lear
 to update the DOM well. The Data Model I understand pretty well now. I am interested to see where it goes when in mod 2. I am
 sure it will get extremley more intensive.
 
-!Onload (assets/Screen Shot 2020-01-14 at 3.15.33 PM.png)
-!after clicks (https://github.com/dreardon1021/CheckYourselfFinal1/blob/master/Assets/Screen%20Shot%202020-01-14%20at%203.15.33%20PM.png)
+
+https://github.com/dreardon1021/CheckYourselfFinal1/blob/master/Assets/Screen%20Shot%202020-01-14%20at%203.13.26%20PM.pnghttps://github.com/dreardon1021/CheckYourselfFinal1/blob/master/Assets/Screen%20Shot%202020-01-14%20at%203.15.33%20PM.png
