@@ -58,6 +58,7 @@ input {
 button {
   width: auto;
   height: auto;
+  cursor: pointer;
 }
 
 button:hover {
@@ -153,7 +154,7 @@ h5 {
   margin-left: 2em;
 }
 
-.left-task p {
+.left-task-item {
   font-size: 1.4em;
   width: 80%;
 }
@@ -248,7 +249,7 @@ h5 {
   height: fit-content;
 }
 
-.task-card-footer p {
+.urgent-text{
   position: relative;
   right: .3em;
   margin: .2em 0 0 0;
@@ -284,8 +285,4 @@ h5 {
 button:disabled {
   background-color: grey;
   color: black;
-}
-
-#no-urgent-message {
-  display: block;
 }
