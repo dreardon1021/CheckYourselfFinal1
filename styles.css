@@ -286,3 +286,8 @@ button:disabled {
   background-color: grey;
   color: black;
 }
+
+.no-urgent-message {
+  position: relative;
+  left: 1.5em;
+}
