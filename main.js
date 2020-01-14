@@ -58,6 +58,9 @@ function taskCardEvents() {
   checkOffBox(event);
   deleteTaskCard(event);
   changeUrgentImage(event);
+  if(event.target.classList.contains('close-button-red')){
+    toggleUrgentMessage()
+  }
 }
 
 function buttonEnables() {
@@ -189,7 +192,6 @@ function addTaskCard() {
     <h5>${toDoList.title}</h5>
   </div>
     <div class="task-card-body">
-
     </div>
     <div class="task-card-footer">
       <div class="urgent">
@@ -253,8 +255,8 @@ function checkIfTrue(event) {
     for (var i = 0; i < parsedObject.tasks.length; i++) {
       parsedTaskValues.push(parsedObject.tasks[i].completed);
   };
-    function isTrue(element, index, array) {
-      return element = true;
+    var isTrue = function (element, index, array) {
+      return element === true;
     }
   // var isTrue = parsedTaskValues => parsedTaskValues === true;
   return parsedTaskValues.every(isTrue);
