@@ -5,36 +5,51 @@ var toDoList = new ToDoList(generateNum());
 var closeButton = document.querySelector('.close-button');
 var addTaskButton = document.querySelector('.add-task-button');
 var makeTaskListButton = document.querySelector('.make-list-button');
-var clearButton = document.querySelector('.clear-button')
+var clearButton = document.querySelector('.clear-button');
+var filterButton = document.querySelector('.filter-button');
 //querySelectors Containers
 var leftTaskContainer = document.querySelector('.current-task-list');
 var rightColumn = document.querySelector('.right-column');
+var urgencyContainer = document.querySelector('.urgency-container')
 //querySelectors Inputs
 var taskInput = document.querySelector('.task-input');
 var taskTitle = document.querySelector('.task-title-input');
 var searchInput = document.querySelector('.nav-search');
 // querySelector generalElements
 var noTaskMessage = document.querySelector('#no-tasks');
+var noUrgentMessage = document.querySelector('#no-urgent-message');
+
 
 // EventListeners
-leftTaskContainer.addEventListener('click', closeLeftTask);
 addTaskButton.addEventListener('click', addSingleTask);
 makeTaskListButton.addEventListener('click', taskButtonEvents);
 clearButton.addEventListener('click', clearInputs);
+filterButton.addEventListener('click', filterButtonEvents)
+leftTaskContainer.addEventListener('click', closeLeftTask);
 rightColumn.addEventListener('click', taskCardEvents);
-taskInput.addEventListener('input', buttonEnables);
 taskTitle.addEventListener('input', buttonEnables);
-searchInput.addEventListener('keyup', searchFieldEvents)
+taskInput.addEventListener('input', buttonEnables);
+searchInput.addEventListener('keyup', searchFieldEvents);
+
 
 
 //Event Handelers
 window.onload = function() {
   listsRemainOnRefresh();
-}
+  for(var i = 0; i < rightColumn.children.length; i++) {
+    if(rightColumn.children[i].classList.contains('task-card-urgent')) {
+      toggleUrgentMessage()
+    };
+  };
+};
 
 function searchFieldEvents() {
-  removeCardsOnSearch();
-}
+  if(filterButton.style.background === 'rgb(239, 74, 35)') {
+    searchUrgentCards();
+  } else {
+    searchAllCards();
+  };
+};
 
 function taskCardEvents() {
   toDoList.updateTask(event);
@@ -43,12 +58,20 @@ function taskCardEvents() {
   checkOffBox(event);
   deleteTaskCard(event);
   changeUrgentImage(event);
+  if(event.target.classList.contains('close-button-red')){
+    toggleUrgentMessage()
+  }
 }
 
 function buttonEnables() {
   enableListButton();
   enableAddTaskButton();
   enableClearButton();
+}
+
+function filterButtonEvents() {
+  changeFilterButtonStyle();
+  filterUrgentCards();
 }
 
 function taskButtonEvents() {
@@ -128,6 +151,28 @@ function enableListButton() {
 function enableClearButton() {
   if (taskInput.value !== '' || taskTitle.value !== '') {
     clearButton.disabled = false;
+  };
+};
+
+//filter button functions
+function changeFilterButtonStyle() {
+    if(filterButton.style.background === 'rgb(239, 74, 35)') {
+      filterButton.style.background = '#1f1f3D';
+    } else {
+      filterButton.style.background = 'rgb(239, 74, 35)';
+  };
+};
+
+function filterUrgentCards(){
+  for(var i = 0; i < rightColumn.children.length; i++){
+    if(rightColumn.children[i].classList.contains('task-card-urgent')) {
+      rightColumn.children[i].style.display = 'block'
+    } else {
+      rightColumn.children[i].style.display = 'none'
+    };
+    if(filterButton.style.background !== 'rgb(239, 74, 35)') {
+      rightColumn.children[i].style.display = 'block'
+    };
   };
 };
 
@@ -238,6 +283,7 @@ function deleteTaskCard(event) {
   };
 };
 
+//urgent message and urgent image
 function changeUrgentImage(event) {
   if(event.target.classList.contains('urgent-static')) {
     toDoList.updateToDo(event);
@@ -246,22 +292,55 @@ function changeUrgentImage(event) {
     urgentRed.setAttribute('src', 'assets/urgent-active.svg');
     urgentRed.classList.add('urgent-static');
     event.target.parentNode.parentNode.parentNode.style.background = "#ffe89D";
+    event.target.parentNode.parentNode.parentNode.classList.add('task-card-urgent')
+    event.target.parentNode.parentNode.parentNode.classList.remove('task-card')
+    toggleUrgentMessage();
     event.target.remove();
     urgentContainer.prepend(urgentRed);
   };
 };
 
+function toggleUrgentMessage() {
+  for(var i = 0; i < rightColumn.children.length; i++) {
+    if(rightColumn.children[i].classList.contains('task-card-urgent')) {
+      noUrgentMessage.remove();
+      console.log('test')
+    } else {
+      noUrgent = document.createElement('h5');
+      noUrgent.setAttribute('id', 'no-urgent-message');
+      noUrgent.innerHTML = 'No current urgent task lists';
+      urgencyContainer.prepend(noUrgent)
+    };
+  };
+};
+
 //search input Functions
-function removeCardsOnSearch() {
+function searchAllCards() {
   for(var i = 0; i < rightColumn.children.length; i++) {
     var titleToUpper = rightColumn.children[i].textContent.toUpperCase();
     var inputToUpper = searchInput.value.toUpperCase();
-    if(searchInput.value !== '' && titleToUpper.indexOf(inputToUpper) > -1) {
+    if(titleToUpper.indexOf(inputToUpper) > -1) {
       rightColumn.children[i].style.display = 'block';
     } else {
       rightColumn.children[i].style.display = 'none';
     };
     if (searchInput.value.length === 0) {
+      rightColumn.children[i].style.display = 'block';
+    };
+  };
+};
+
+function searchUrgentCards() {
+  for(var i = 0; i < rightColumn.children.length; i++) {
+    var titleToUpper = rightColumn.children[i].textContent.toUpperCase();
+    var inputToUpper = searchInput.value.toUpperCase();
+    if(titleToUpper.indexOf(inputToUpper) > -1 && rightColumn.children[i].classList.contains('task-card-urgent')) {
+      console.log('test')
+      rightColumn.children[i].style.display = 'block';
+    } else {
+      rightColumn.children[i].style.display = 'none';
+    };
+    if (searchInput.value.length === 0 && rightColumn.children[i].classList.contains('task-card-urgent')) {
       rightColumn.children[i].style.display = 'block';
     };
   };

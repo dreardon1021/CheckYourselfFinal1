@@ -212,7 +212,7 @@ h5 {
   border: 2px solid grey;
   margin: 2em;
   overflow: auto;
-  background-color: #ffe89D;
+  background: #ffe89D;
 }
 
 /* task card header */
@@ -284,4 +284,8 @@ h5 {
 button:disabled {
   background-color: grey;
   color: black;
+}
+
+#no-urgent-message {
+  display: block;
 }
