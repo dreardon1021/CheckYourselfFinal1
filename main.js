@@ -127,6 +127,7 @@ function addSingleTask() {
   addTaskButton.disabled = true;
   toDoList.tasks.push(task);
   task = new Task(generateNum(), taskInput.value);
+  enableListButton();
 };
 
 function removeTasksOnSave() {
@@ -184,7 +185,7 @@ function addTaskCard() {
   } else {
     urgentClass = 'task-card';
     urgentSrc = 'urgent';
-  }
+  };
   noTaskMessage.remove();
   rightColumn.insertAdjacentHTML('afterbegin', `<div class="${urgentClass} ${toDoList.id}">
   <div class="task-card-title">
@@ -294,17 +295,17 @@ function changeUrgentImage(event) {
     event.target.parentNode.parentNode.parentNode.style.background = "#ffe89D";
     event.target.parentNode.parentNode.parentNode.classList.add('task-card-urgent')
     event.target.parentNode.parentNode.parentNode.classList.remove('task-card')
-    toggleUrgentMessage();
     event.target.remove();
     urgentContainer.prepend(urgentRed);
+    toggleUrgentMessage();
   };
 };
 
 function toggleUrgentMessage() {
   for(var i = 0; i < rightColumn.children.length; i++) {
     if(rightColumn.children[i].classList.contains('task-card-urgent')) {
-      noUrgentMessage.remove();
       console.log('test')
+      noUrgentMessage.remove();
     } else {
       noUrgent = document.createElement('h5');
       noUrgent.setAttribute('id', 'no-urgent-message');
@@ -335,7 +336,6 @@ function searchUrgentCards() {
     var titleToUpper = rightColumn.children[i].textContent.toUpperCase();
     var inputToUpper = searchInput.value.toUpperCase();
     if(titleToUpper.indexOf(inputToUpper) > -1 && rightColumn.children[i].classList.contains('task-card-urgent')) {
-      console.log('test')
       rightColumn.children[i].style.display = 'block';
     } else {
       rightColumn.children[i].style.display = 'none';
