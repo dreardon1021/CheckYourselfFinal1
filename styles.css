@@ -285,3 +285,7 @@ button:disabled {
   background-color: grey;
   color: black;
 }
+
+#no-urgent-message {
+  display: block;
+}

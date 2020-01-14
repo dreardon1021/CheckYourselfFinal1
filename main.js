@@ -10,12 +10,15 @@ var filterButton = document.querySelector('.filter-button');
 //querySelectors Containers
 var leftTaskContainer = document.querySelector('.current-task-list');
 var rightColumn = document.querySelector('.right-column');
+var urgencyContainer = document.querySelector('.urgency-container')
 //querySelectors Inputs
 var taskInput = document.querySelector('.task-input');
 var taskTitle = document.querySelector('.task-title-input');
 var searchInput = document.querySelector('.nav-search');
 // querySelector generalElements
 var noTaskMessage = document.querySelector('#no-tasks');
+var noUrgentMessage = document.querySelector('#no-urgent-message');
+
 
 // EventListeners
 addTaskButton.addEventListener('click', addSingleTask);
@@ -33,7 +36,12 @@ searchInput.addEventListener('keyup', searchFieldEvents);
 //Event Handelers
 window.onload = function() {
   listsRemainOnRefresh();
-}
+  for(var i = 0; i < rightColumn.children.length; i++) {
+    if(rightColumn.children[i].classList.contains('task-card-urgent')) {
+      toggleUrgentMessage()
+    };
+  };
+};
 
 function searchFieldEvents() {
   if(filterButton.style.background === 'rgb(239, 74, 35)') {
@@ -50,6 +58,9 @@ function taskCardEvents() {
   checkOffBox(event);
   deleteTaskCard(event);
   changeUrgentImage(event);
+  if(event.target.classList.contains('close-button-red')){
+    toggleUrgentMessage()
+  }
 }
 
 function buttonEnables() {
@@ -272,6 +283,7 @@ function deleteTaskCard(event) {
   };
 };
 
+//urgent message and urgent image
 function changeUrgentImage(event) {
   if(event.target.classList.contains('urgent-static')) {
     toDoList.updateToDo(event);
@@ -282,8 +294,23 @@ function changeUrgentImage(event) {
     event.target.parentNode.parentNode.parentNode.style.background = "#ffe89D";
     event.target.parentNode.parentNode.parentNode.classList.add('task-card-urgent')
     event.target.parentNode.parentNode.parentNode.classList.remove('task-card')
+    toggleUrgentMessage();
     event.target.remove();
     urgentContainer.prepend(urgentRed);
+  };
+};
+
+function toggleUrgentMessage() {
+  for(var i = 0; i < rightColumn.children.length; i++) {
+    if(rightColumn.children[i].classList.contains('task-card-urgent')) {
+      noUrgentMessage.remove();
+      console.log('test')
+    } else {
+      noUrgent = document.createElement('h5');
+      noUrgent.setAttribute('id', 'no-urgent-message');
+      noUrgent.innerHTML = 'No current urgent task lists';
+      urgencyContainer.prepend(noUrgent)
+    };
   };
 };
 
