@@ -19,4 +19,4 @@ to update the DOM well. The Data Model I understand pretty well now. I am intere
 sure it will get extremley more intensive.
 
 
-https://github.com/dreardon1021/CheckYourselfFinal1/blob/master/Assets/Screen%20Shot%202020-01-14%20at%203.13.26%20PM.pnghttps://github.com/dreardon1021/CheckYourselfFinal1/blob/master/Assets/Screen%20Shot%202020-01-14%20at%203.15.33%20PM.png
+(https://user-images.githubusercontent.com/56371796/72388091-449efb80-36e2-11ea-9272-d0119be3e509.png)
