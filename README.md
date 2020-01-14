@@ -19,4 +19,4 @@ to update the DOM well. The Data Model I understand pretty well now. I am intere
 sure it will get extremley more intensive.
 
 
-(https://user-images.githubusercontent.com/56371796/72388091-449efb80-36e2-11ea-9272-d0119be3e509.png)
+![My Comp](https://user-images.githubusercontent.com/56371796/72388091-449efb80-36e2-11ea-9272-d0119be3e509.png)
