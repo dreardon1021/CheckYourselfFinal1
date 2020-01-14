@@ -212,7 +212,7 @@ h5 {
   border: 2px solid grey;
   margin: 2em;
   overflow: auto;
-  background-color: #ffe89D;
+  background: #ffe89D;
 }
 
 /* task card header */
