@@ -16,7 +16,8 @@ search input and relateable cards will appear. If the filter by urgency button i
 The main focus of this project felt to be the Data Model. We have been updating the DOM for many things now. I felt as if this 
 project was easier then build a bear simply beacuse I did build a bear. Ive learned to create layouts very quickly and now how 
 to update the DOM well. The Data Model I understand pretty well now. I am interested to see where it goes when in mod 2. I am
-sure it will get extremley more intensive.
+sure it will get extremley more intensive.)
 
 
 ![My Comp](https://user-images.githubusercontent.com/56371796/72388091-449efb80-36e2-11ea-9272-d0119be3e509.png)
+![userClicksComp] (https://user-images.githubusercontent.com/56371796/72388249-b414eb00-36e2-11ea-8401-254f55026e6c.png)
