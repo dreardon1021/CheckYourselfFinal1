@@ -353,15 +353,19 @@ button:disabled {
   }
 
   .filter-button {
-    width: 18em;
+    width: 17em;
     height: 2em;
     font-size: 1.3em;
-    margin-bottom: 1em;
+    margin: 1em;
   }
 
   .left-column {
     width: 100%;
     justify-content: space-around;
+  }
+
+  .task-card {
+    width: 20em;
   }
 
   .right-column {
