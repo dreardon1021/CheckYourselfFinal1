@@ -291,3 +291,84 @@ button:disabled {
   position: relative;
   left: 1.5em;
 }
+
+@media screen and (max-width: 1439px) {
+  main {
+    width: 100%
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  main {
+    width: 100%
+  }
+}
+
+@media screen and (max-width: 850px) {
+  main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  nav {
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin-left: 0px;
+  }
+
+  .search-area {
+    margin-right: 0px;
+    width: 15.5em;
+  }
+
+  .make-clear-container button {
+    width: 12em;
+    height: 2em;
+    font-size: 1.3em;
+  }
+
+  input {
+    height: 2em;
+  }
+
+  .task-title-input{
+    width: 22em;
+    height: 2em;
+  }
+
+  .add-task-button {
+    width: 4em;
+    height: 2.4em;
+    font-size: .67em;
+  }
+
+  .task-input {
+    width: 18em;
+  }
+
+  .filter-button {
+    width: 18em;
+    height: 2em;
+    font-size: 1.3em;
+    margin-bottom: 1em;
+  }
+
+  .left-column {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .right-column {
+    width: 100%;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+}

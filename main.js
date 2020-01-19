@@ -36,6 +36,7 @@ searchInput.addEventListener('keyup', searchFieldEvents);
 //Event Handelers
 window.onload = function() {
   listsRemainOnRefresh();
+  // enableCloseOnRefresh()
   for(var i = 0; i < rightColumn.children.length; i++) {
     if(rightColumn.children[i].classList.contains('task-card-urgent')) {
       toggleUrgentMessage()
@@ -257,7 +258,7 @@ function checkIfTrue(event) {
   };
     var isTrue = function (element, index, array) {
       return element === true;
-    }
+    };
   // var isTrue = parsedTaskValues => parsedTaskValues === true;
   return parsedTaskValues.every(isTrue);
 };
@@ -272,6 +273,23 @@ function enableCloseButton(trueCheck, event) {
     children[2].children[1].prepend(redClose);
   };
 };
+
+// function enableCloseOnRefresh() {
+//   for (var i = 0; i < window.localStorage.length; i++) {
+//     var key = window.localStorage.key(i);
+//     var objectToChange = window.localStorage.getItem(key);
+//     var parsedObject = JSON.parse(objectToChange);
+//     for (var z = 0; z < parsedObject.tasks.length; z++) {
+//       if(parsedObject.tasks[z].completed === true && rightColumn.children[i].classList.contains(parsedObject.id)) {
+//         rightColumn.children[i].children[2].children[1].children[0].remove();
+//         var redClose = document.createElement('img');
+//         redClose.classList.add('close-button-red');
+//         redClose.setAttribute('src', 'assets/delete-active.svg');
+//         rightColumn.children[i].children[2].children[1].prepend(redClose);
+//       };
+//     };
+//   };
+// };
 
 function deleteTaskCard(event) {
   if (event.target.classList.contains('close-button-red')) {
