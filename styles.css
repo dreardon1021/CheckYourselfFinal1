@@ -288,8 +288,7 @@ button:disabled {
 }
 
 .no-urgent-message {
-  position: relative;
-  left: 1.5em;
+  margin-left: 2em;
 }
 
 @media screen and (max-width: 1439px) {
@@ -359,7 +358,7 @@ button:disabled {
     width: 12em;
     height: 2em;
     font-size: 1.3em;
-    margin: 1em 0 1em 3em;
+    margin: 0 0 .5em 0;
   }
 
   .left-column {
@@ -381,14 +380,17 @@ button:disabled {
 
   .urgency-container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
   }
 
   .no-urgent-message {
-    left: 1.5em;
     width: auto;
     height: auto;
     font-size: 1.5em;
-    margin: 1em 0 0 0;
+    margin: 0 0 1em 0;
     display: inline-block;
   }
 
