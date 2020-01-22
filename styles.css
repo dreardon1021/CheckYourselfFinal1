@@ -195,6 +195,7 @@ h5 {
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   background-color: #f3f6f7;
 }
 
@@ -291,19 +292,8 @@ button:disabled {
   margin-left: 2em;
 }
 
-@media screen and (max-width: 1439px) {
-  main {
-    width: 100%
-  }
-}
 
-@media screen and (max-width: 1200px) {
-  main {
-    width: 100%
-  }
-}
-
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 600px) {
   * {
     width: 101%;
   }
